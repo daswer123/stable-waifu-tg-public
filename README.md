@@ -1,5 +1,9 @@
 # Инструкция для установки будет позже, возможности данной копии вы можете посмотреть [тут](https://boosty.to/daswerr/posts/8f37fa24-14ef-4fdb-804d-d0840bbc1fb1)
 
+# Demo ( более качественно можно посмотерть [тут](https://boosty.to/daswerr/posts/8f37fa24-14ef-4fdb-804d-d0840bbc1fb1))
+
+https://github.com/daswer123/stable-waifu-tg-public/assets/22278673/48bc3b53-9d10-4bcb-b2c5-80268c757298
+
 # Стек
 
 ## Нейросети
