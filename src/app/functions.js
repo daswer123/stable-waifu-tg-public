@@ -3,7 +3,7 @@ import { Markup } from "telegraf";
 import { getInstanceById, getInstanceCreatedTimeById, handleInstanceRequest, updateInstance } from "../backend/db/db_prompts.js";
 import { escapeMarkdown, sortButtonsInRow, sortPresetButtonsInRow } from "../utils/funcs.js";
 import { getARByRatio, getARByType, getAllModels, getAllModelsPreset, getAllStrenghtSettings, getDefaultPresetBymodel_name, getModelByName, getPresetByName, getStrenghtByName } from "../backend/db/db_settings.js";
-import { modelsPerPage } from "../utils/variables.js";
+import { botName, modelsPerPage } from "../utils/variables.js";
 
 const BASE_TEXT = `Генерация *по описанию* Проверь настройки и жми на кнопку начала\\!`;
 const BASE_TEXT_IMG = `Генерация *по картинке* Проверь настройки и жми на кнопку начала\\!`;
@@ -57,9 +57,9 @@ export async function createTextMenu(ctx, unic_id, baseText = null) {
   const CUSTOM_SYMBOL = baseText == BASE_TEXT || baseText == BASE_TEXT_IMG  ? "🎨 " : "";
 
   const additionalInfo = `\\> _[Стили и навыки](https://telegra.ph/Stili-i-vozmozhnosti-StableWaifuBot-06-05)_\n\\> _[Аниме персонажи](https://telegra.ph/Personazhi-iz-anime-i-igr-v-StableWaifuBot-04-13)_`;
-  const prompt = `${CUSTOM_SYMBOL}\`${escapeMarkdown(menuData.prompt)}\`\n[изменить](https://t.me/SD_Daswer_bot?start=${menuData.edit_id})`;
+  const prompt = `${CUSTOM_SYMBOL}\`${escapeMarkdown(menuData.prompt)}\`\n[изменить](https://t.me/${botName}?start=${menuData.edit_id})`;
 
-  // const otherParamsTest =  `\n\nСид:[Проверка](https://t.me/SD_Daswer_bot?start=${menuData.unic_id})\n\n`
+  // const otherParamsTest =  `\n\nСид:[Проверка](https://t.me/${botName}?start=${menuData.unic_id})\n\n`
   const otherParamsTest = ``;
 
   const otherParams = isOtherParam ? otherSettingsString : ``;
@@ -580,7 +580,7 @@ export async function createCreateMessageMarkup(unic_id,menuData = null,whichBut
 
   let finaleMessage = `\\#${menuId.model_name.replace(" ","\\_")} \\#${menuId.generation_type}`
 
-  finaleMessage+=`\n🌱 Сид: [${menuId.sid}](https://t.me/SD_Daswer_bot?start=${menuId.unic_id})`
+  finaleMessage+=`\n🌱 Сид: [${menuId.sid}](https://t.me/${botName}?start=${menuId.unic_id})`
   finaleMessage+=`\n 🎨 Ввод: \`${menuId.prompt}\``
 
   finaleMessage+=`\n\n_\\*Сегодня у тебя есть ещё 3 бонусных нажатия на повтор, остальные будут расходовать токены_`
@@ -610,8 +610,8 @@ export async function createCreateMessageMarkupVar(unic_id,menuData = null,which
   let finaleMessage = `\\#${menuId.model_name} ${menuId.preset_name ? `\\#${menuId.preset_name} ` : ``}\\#variant`
 
 
-  finaleMessage+=`\n 🔀 Вариация генерации [\\#${menuId.sid}](https://t.me/SD_Daswer_bot?start=${menuId.subsid_id})`
-  finaleMessage+=`\n🌱 Сид: [${menuId.variation_sid}](https://t.me/SD_Daswer_bot?start=${menuId.unic_id})`
+  finaleMessage+=`\n 🔀 Вариация генерации [\\#${menuId.sid}](https://t.me/${botName}?start=${menuId.subsid_id})`
+  finaleMessage+=`\n🌱 Сид: [${menuId.variation_sid}](https://t.me/${botName}?start=${menuId.unic_id})`
 
   const againBtn = whichButtonBlock == "again" ? Markup.button.callback(`⏳ Отменить`, `cancel_var_${jobId}_var`) : whichButtonBlock ? Markup.button.callback(`🔁 Ещё раз`,`wait_message_gen`) : Markup.button.callback(`🔁 Ещё раз`,`variations_gen_start_${menuId.subsid_iad}_varmenu`)
   const scaleBtn = whichButtonBlock == "scale" ? Markup.button.callback(`⏳ Отменить`, `cancel_upscale_${jobId}_var`) : whichButtonBlock ? Markup.button.callback(`🔥 HyperScale`,`wait_message_gen`) : Markup.button.callback("🔥 HyperScle",`upscale_gen_menu_${menuId.unic_id}_var`)

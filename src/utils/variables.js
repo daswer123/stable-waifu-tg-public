@@ -6,6 +6,7 @@ export const serverPort = 8070;
 export const SD_ADRESS="http://localhost:7860"
 export const LLM_MODE = true
 
+export const botName = "StableKawaiiBot"
 export const refFolder = "data/reference"
 export const poseFolder = "data/pose"
 export const shapeFolder = "data/shape"

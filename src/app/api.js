@@ -81,6 +81,7 @@ import { Markup } from "telegraf";
 import { createCompleteMenu, createCreateMessageMarkup, createCreateMessageMarkupVar } from "./functions.js";
 import { type } from "os";
 import { getResolutionFromAR } from "../backend/db/db_settings.js";
+import { botName } from "../utils/variables.js";
 
 export async function startGenerationPolling(jobId,ctx,isFirst = true,messageCtx = null,typeMenu="gen") {
     
@@ -146,10 +147,10 @@ export async function startGenerationPolling(jobId,ctx,isFirst = true,messageCtx
                 const height = resolution[1]
 
                 if(upscaleType == "simple_upscale"){
-                    finaleMessage = `🆙 *Upscale x2* генерации [\\#${menuData.sid}](https://t.me/SD_Daswer_bot?start=${menuData.unic_id})
+                    finaleMessage = `🆙 *Upscale x2* генерации [\\#${menuData.sid}](https://t.me/${botName}?start=${menuData.unic_id})
 ${width * 2}x${height * 2} \\-\\> ${width * 4}x${height * 4}`
                 } else {
-                    finaleMessage = `🔥 *HyperScale x2\\.5* генерации [\\#${menuData.sid}](https://t.me/SD_Daswer_bot?start=${menuData.unic_id})
+                    finaleMessage = `🔥 *HyperScale x2\\.5* генерации [\\#${menuData.sid}](https://t.me/${botName}?start=${menuData.unic_id})
 ${width * 2}x${height * 2} \\-\\> ${width * 4.5}x${height * 4.5}`
                 }
                 

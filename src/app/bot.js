@@ -15,7 +15,7 @@ import { createInstance, createPromptTable, getInstanceById, getInstanceByedit_i
 import { createSettingsTables, getAllModels, getModelByName, getModelPositonByName } from "../backend/db/db_settings.js";
 import { createCreateMessageMarkup, createGiftTokenMenuAndReply, createImgMenuAndEdit, createTextMenuAndEdit, createTextMenuAndReply, deleteMessageMarkup, replyGreatingMessage } from "./functions.js";
 import * as fs from 'fs';
-import { INITIAL_SESSION, modelsPerPage, poseFolder, refFolder, sessionPathFolder, shapeFolder } from "../utils/variables.js";
+import { INITIAL_SESSION, botName, modelsPerPage, poseFolder, refFolder, sessionPathFolder, shapeFolder } from "../utils/variables.js";
 import { img2Tags } from "../utils/waifu_tagger.js";
 import path from "path";
 import { createUserTables, getUserPreferences, saveSessionToDatabase } from "../backend/db/db_users.js";
@@ -354,7 +354,7 @@ bot.on("photo", async (ctx) => {
 
 import axios from "axios";
 bot.on("message", async (ctx) => {
-    if (ctx.message.document && ctx.message.forward_from && ctx.message.forward_from.username === 'SD_Daswer_bot') {
+    if (ctx.message.document && ctx.message.forward_from && ctx.message.forward_from.username === botName) {
 
         // Получаем информацию txt2img или img2img
         const captionEntities = ctx.message.caption_entities;
