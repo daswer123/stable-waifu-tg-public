@@ -1,0 +1,9 @@
+node_modules/
+.env
+package-lock.json
+data
+venv
+test.jpg
+*.json
+sessions
+*.pyc
